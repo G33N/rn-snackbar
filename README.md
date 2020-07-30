@@ -130,16 +130,6 @@ Dismisses any existing Snackbars.
 
 ## Troubleshooting
 
-#### Snackbar not appearing [Android]
-
-The Snackbar is designed to attach to whatever view is on top of your screen when `show` is called. If that view happens to be a temporary alert modal or some other view that goes away, you'll never see the Snackbar.
-
-A workaround in some cases is to use `setTimeout` to show the Snackbar a few seconds later after the modal is gone. See [issue #28](https://github.com/cooperka/rn-snackbak/issues/28) for further discussion. If you want to submit a PR to improve the view-finding logic, feel free.
-
-#### Undefined import
-
-If you see errors similar to `Cannot read property 'LENGTH_LONG' of undefined` or `Undefined not an object (NativeModules.RNSnackbar)`, please refer to [issue #43](https://github.com/cooperka/rn-snackbak/issues/43) for help.
-
 #### Compiling [Android]
 
 If you have issues compiling for Android after linking this library,

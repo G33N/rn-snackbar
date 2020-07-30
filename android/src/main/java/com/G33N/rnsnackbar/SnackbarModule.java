@@ -1,4 +1,4 @@
-package com.azendoo.reactnativesnackbar;
+package com.geen.rnsnackbar;
 
 import android.graphics.Color;
 import android.graphics.Typeface;

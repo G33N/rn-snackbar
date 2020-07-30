@@ -1,4 +1,4 @@
-package com.azendoo.reactnativesnackbar;
+package com.geen.rnsnackbar;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
