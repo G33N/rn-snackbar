@@ -43,6 +43,8 @@ public class SnackbarModule extends ReactContextBaseJavaModule {
         constants.put("LENGTH_LONG", Snackbar.LENGTH_LONG);
         constants.put("LENGTH_SHORT", Snackbar.LENGTH_SHORT);
         constants.put("LENGTH_INDEFINITE", Snackbar.LENGTH_INDEFINITE);
+        constants.put("POSITION_TOP", Snackbar.POSITION_TOP);
+        constants.put("POSITION_BOTTOM", Snackbar.POSITION_BOTTOM);
 
         return constants;
     }
@@ -102,6 +104,7 @@ public class SnackbarModule extends ReactContextBaseJavaModule {
     private void displaySnackbar(View view, ReadableMap options, final Callback callback) {
         String text = getOptionValue(options, "text", "");
         int duration = getOptionValue(options, "duration", Snackbar.LENGTH_SHORT);
+        String position = getOptionValue(options, "position", Snackbar.POSITION_BOTTOM);
         int textColor = getOptionValue(options, "textColor", Color.WHITE);
         boolean rtl = getOptionValue(options, "rtl", false);
         String fontFamily = getOptionValue(options, "fontFamily", null);
@@ -141,6 +144,11 @@ public class SnackbarModule extends ReactContextBaseJavaModule {
 
         if (options.hasKey("backgroundColor")) {
             snackbarView.setBackgroundColor(options.getInt("backgroundColor"));
+        }
+
+        if (options.hasKey("position") && getOptionValue(actionOptions, "position") === Snackbar.POSITION_TOP) {
+            View snackbarView = snackbar.getView();
+            FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)snackbarView.getLayoutParams();
         }
 
         if (options.hasKey("action")) {

@@ -1,6 +1,6 @@
-import { NativeModules } from 'react-native';
+import { NativeModules } from "react-native";
 
-describe('Snackbar module', () => {
+describe("Snackbar module", () => {
   let Snackbar;
 
   beforeAll(() => {
@@ -10,26 +10,26 @@ describe('Snackbar module', () => {
 
     // Require Snackbar only after NativeModules have been mocked.
     // eslint-disable-next-line global-require
-    Snackbar = require('../index').default;
+    Snackbar = require("../index").default;
   });
 
   beforeEach(() => {
     NativeModules.RNSnackbar.show.mockClear();
   });
 
-  it('calls native with default params', () => {
+  it("calls native with default params", () => {
     Snackbar.show({});
 
     expect(NativeModules.RNSnackbar.show.mock.calls).toMatchSnapshot();
   });
 
-  it('calls native with deprecated params', () => {
+  it("calls native with deprecated params", () => {
     Snackbar.show({
-      title: 'Hello world',
-      color: 'blue',
+      title: "Hello world",
+      color: "blue",
       action: {
-        title: 'UNDO',
-        color: 'green',
+        title: "UNDO",
+        color: "green",
         onPress: jest.fn(),
       },
     });
@@ -37,15 +37,16 @@ describe('Snackbar module', () => {
     expect(NativeModules.RNSnackbar.show.mock.calls).toMatchSnapshot();
   });
 
-  it('calls native with normal params', () => {
+  it("calls native with normal params", () => {
     Snackbar.show({
-      text: 'Hello world',
+      text: "Hello world",
       duration: 0,
-      textColor: 'blue',
-      backgroundColor: 'red',
+      position: "POSITION_TOP",
+      textColor: "blue",
+      backgroundColor: "red",
       action: {
-        text: 'UNDO',
-        textColor: 'green',
+        text: "UNDO",
+        textColor: "green",
         onPress: jest.fn(),
       },
     });
