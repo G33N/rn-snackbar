@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
-import Snackbar from "react-native-snackbar";
+import Snackbar from "rn-snackbar";
 
 import styles from "../styles";
 
@@ -84,12 +84,12 @@ class Example extends Component {
         <TouchableOpacity
           onPress={() =>
             Snackbar.show({
-              text: "Hello, World!",
+              text: "I'm at the top of the screen",
               position: Snackbar.POSITION_TOP,
             })
           }
         >
-          <Text style={styles.button}>Snackbar with position</Text>
+          <Text style={styles.button}>Snackbar positioned at top</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => Snackbar.dismiss()}>

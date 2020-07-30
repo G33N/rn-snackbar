@@ -1,5 +1,5 @@
 {
-  "name": "react-native-snackbar",
+  "name": "rn-snackbar",
   "version": "2.2.3",
   "description": "Material Design \"Snackbar\" component for Android and iOS.",
   "main": "lib/index.js",

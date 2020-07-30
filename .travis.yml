@@ -1,0 +1,26 @@
+language: node_js
+
+node_js:
+  - "10"
+  - "12"
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - example/node_modules
+    - jest-cache
+    - example/jest-cache2
+
+install:
+  - yarn install
+  - cd example && yarn install && yarn run sync
+  - cd ..
+
+script:
+  - yarn run lint
+  # Ignoring flow for now because it just fails on all sorts of React Native issues.
+  # - yarn run flow
+  - yarn test -- --cacheDirectory="jest-cache"
+  - yarn test:types
+  - cd example && yarn test -- --cacheDirectory="jest-cache2"
