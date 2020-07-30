@@ -1,6 +1,6 @@
 // @flow
 
-import { NativeModules, processColor } from 'react-native';
+import { NativeModules, processColor } from "react-native";
 
 /**
  * An optional, actionable button on the Snackbar.
@@ -39,6 +39,12 @@ type SnackBarOptions = {
   duration?: number,
 
   /**
+   * Position of the Snackbar stays on screen.
+   * Must be one of Snackbar.POSITION_TOP, Snackbar.POSITION_BOTTOM.
+   */
+  position?: string,
+
+  /**
    * Snackbar text color.
    * Accepts various forms of colors such as hex, literals, rgba, etc.
    */
@@ -49,6 +55,12 @@ type SnackBarOptions = {
    * Accepts color strings such as hex, literals, rgba
    */
   backgroundColor?: string,
+
+  /**
+   * Background image of the snackbar.
+   * Accepts jpg, png and svg formats.
+   */
+  backgroundImage?: string,
 
   /**
    * [Android] The basename of a .ttf font from assets/fonts/.
@@ -81,6 +93,16 @@ type ISnackBar = {
   LENGTH_INDEFINITE: number,
 
   /**
+   * Snackbar position that place the snackbar on top.
+   */
+  POSITION_TOP: string,
+
+  /**
+   * Snackbar position that place the snackbar on bottom.
+   */
+  POSITION_BOTTOM: string,
+
+  /**
    * Shows a native Snackbar component.
    */
   show: (options: SnackBarOptions) => void,
@@ -97,8 +119,8 @@ const SnackBar: ISnackBar = {
   LENGTH_INDEFINITE: NativeModules.RNSnackbar.LENGTH_INDEFINITE,
 
   show(options: SnackBarOptions) {
-    warnDeprecation(options, 'title', 'text');
-    warnDeprecation(options, 'color', 'textColor');
+    warnDeprecation(options, "title", "text");
+    warnDeprecation(options, "color", "textColor");
 
     const text = options.text || options.title;
     // eslint-disable-next-line no-param-reassign
@@ -107,18 +129,20 @@ const SnackBar: ISnackBar = {
     // eslint-disable-next-line no-param-reassign
     delete options.color;
     const textColor = textColorRaw && processColor(textColorRaw);
-    const backgroundColor = options.backgroundColor && processColor(options.backgroundColor);
+    const backgroundColor =
+      options.backgroundColor && processColor(options.backgroundColor);
 
     const action = options.action || {};
 
-    warnDeprecation(action, 'title', 'text');
-    warnDeprecation(action, 'color', 'textColor');
+    warnDeprecation(action, "title", "text");
+    warnDeprecation(action, "color", "textColor");
 
     const actionText = action.text || action.title;
     delete action.title;
     const actionTextColorRaw = action.textColor || action.color;
     delete action.color;
-    const actionTextColor = actionTextColorRaw && processColor(actionTextColorRaw);
+    const actionTextColor =
+      actionTextColorRaw && processColor(actionTextColorRaw);
     const onPressCallback = action.onPress || (() => {});
 
     const nativeOptions = {
@@ -126,11 +150,13 @@ const SnackBar: ISnackBar = {
       text,
       textColor,
       backgroundColor,
-      action: options.action ? {
-        ...action,
-        text: actionText,
-        textColor: actionTextColor,
-      } : undefined,
+      action: options.action
+        ? {
+            ...action,
+            text: actionText,
+            textColor: actionTextColor,
+          }
+        : undefined,
     };
 
     NativeModules.RNSnackbar.show(nativeOptions, onPressCallback);
@@ -143,7 +169,9 @@ const SnackBar: ISnackBar = {
 
 function warnDeprecation(options, deprecatedKey, newKey) {
   if (options && options[deprecatedKey]) {
-    console.warn(`The Snackbar '${deprecatedKey}' option has been deprecated. Please switch to '${newKey}' instead.`);
+    console.warn(
+      `The Snackbar '${deprecatedKey}' option has been deprecated. Please switch to '${newKey}' instead.`
+    );
   }
 }
 

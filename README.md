@@ -3,8 +3,6 @@
 Material Design "Snackbar" component for Android and iOS.
 Supports custom colors, fonts, background, position and languages.
 
-![Snackbar screenshot](example/screenshots/snackbar.png)
-
 Snackbars are used for displaying a brief message to the user, along with an optional action.
 They animate up from the bottom of the screen and then disappear shortly afterward.
 

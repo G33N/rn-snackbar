@@ -37,6 +37,12 @@ export interface SnackBarOptions {
   duration?: number;
 
   /**
+   * Position of the Snackbar stays on screen.
+   * Must be one of Snackbar.POSITION_TOP, Snackbar.POSITION_BOTTOM.
+   */
+  position?: string;
+
+  /**
    * Snackbar text color.
    * Accepts various forms of colors such as hex, literals, rgba, etc.
    */
@@ -47,6 +53,12 @@ export interface SnackBarOptions {
    * Accepts color strings such as hex, literals, rgba
    */
   backgroundColor?: string;
+
+  /**
+   * Background image of the snackbar.
+   * Accepts jpg, png and svg formats.
+   */
+  backgroundImage?: string;
 
   /**
    * [Android] The basename of a .ttf font from assets/fonts/.
@@ -77,6 +89,16 @@ export interface SnackbarStatic {
    * Snackbar duration that lasts forever (until dismissed, replaced, or action button is tapped).
    */
   LENGTH_INDEFINITE: number;
+
+  /**
+   * Snackbar position that place the snackbar on top.
+   */
+  POSITION_TOP: string;
+
+  /**
+   * Snackbar position that place the snackbar on bottom.
+   */
+  POSITION_BOTTOM: string;
 
   /**
    * Shows a native Snackbar component.
