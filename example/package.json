@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "run:android": "cd .. && yarn build && cd example && npx react-native run-android",
     "preinstall": "cd .. && yarn run build",
     "postinstall": "rm -rf node_modules/rn-snackbar/node_modules node_modules/rn-snackbar/example",
     "sync": "./sync.sh",
