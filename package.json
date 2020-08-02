@@ -1,6 +1,6 @@
 {
   "name": "rn-snackbar",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Material Design \"Snackbar\" component for Android and iOS.",
   "main": "lib/index.js",
   "types": "src/index.d.ts",
@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js,.jsx",
     "flow": "flow src",
     "clean": "rm -rf lib",
-    "build": "yarn run clean && babel src --out-dir lib --ignore src/__tests__",
+    "build": "yarn run clean && babel src --out-dir lib --ignore src/__tests__ && cd example/ && yarn sync",
     "prepublish": "yarn run build"
   },
   "jest": {
@@ -26,6 +26,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/G33N/rn-snackbar.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "keywords": [
     "react-native",
