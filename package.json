@@ -1,5 +1,5 @@
 {
-  "name": "rn-snackbar",
+  "name": "@g33n/rn-snackbar",
   "version": "2.2.4",
   "description": "Material Design \"Snackbar\" component for Android and iOS.",
   "main": "lib/index.js",
@@ -26,9 +26,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/G33N/rn-snackbar.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "keywords": [
     "react-native",
@@ -65,5 +62,10 @@
     "react": "16.10.2",
     "react-native": "0.61.2",
     "typescript": "3.6.4"
-  }
+  },
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
+  "dependencies": {}
 }
