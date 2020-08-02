@@ -5,7 +5,7 @@
   "scripts": {
     "run:android": "cd .. && yarn build && cd example && npx react-native run-android",
     "preinstall": "cd .. && yarn run build",
-    "postinstall": "rm -rf node_modules/rn-snackbar/node_modules node_modules/rn-snackbar/example",
+    "postinstall": "rm -rf node_modules/@g33n/rn-snackbar/node_modules node_modules/@g33n/rn-snackbar/example",
     "sync": "./sync.sh",
     "start": "react-native start",
     "test": "jest"
@@ -13,7 +13,7 @@
   "dependencies": {
     "react": "16.10.2",
     "react-native": "0.61.2",
-    "rn-snackbar": "file:.."
+    "@g33n/rn-snackbar": "file:.."
   },
   "devDependencies": {
     "@babel/core": "7.6.4",
