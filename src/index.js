@@ -117,8 +117,6 @@ const SnackBar: ISnackBar = {
   LENGTH_LONG: NativeModules.RNSnackbar.LENGTH_LONG,
   LENGTH_SHORT: NativeModules.RNSnackbar.LENGTH_SHORT,
   LENGTH_INDEFINITE: NativeModules.RNSnackbar.LENGTH_INDEFINITE,
-  POSITION_TOP: NativeModules.RNSnackbar.POSITION_TOP,
-  POSITION_BOTTOM: NativeModules.RNSnackbar.POSITION_BOTTOM,
 
   show(options: SnackBarOptions) {
     warnDeprecation(options, "title", "text");

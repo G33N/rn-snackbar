@@ -7,8 +7,10 @@ import com.google.android.material.snackbar.Snackbar;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.FrameLayout;
 
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -43,8 +45,8 @@ public class SnackbarModule extends ReactContextBaseJavaModule {
         constants.put("LENGTH_LONG", Snackbar.LENGTH_LONG);
         constants.put("LENGTH_SHORT", Snackbar.LENGTH_SHORT);
         constants.put("LENGTH_INDEFINITE", Snackbar.LENGTH_INDEFINITE);
-        constants.put("POSITION_TOP", Snackbar.POSITION_TOP);
-        constants.put("POSITION_BOTTOM", Snackbar.POSITION_BOTTOM);
+        constants.put("POSITION_TOP", "top");
+        constants.put("POSITION_BOTTOM", "bottom");
 
         return constants;
     }
@@ -102,9 +104,10 @@ public class SnackbarModule extends ReactContextBaseJavaModule {
     }
 
     private void displaySnackbar(View view, ReadableMap options, final Callback callback) {
+        final Map<String, Object> constants = getConstants();
         String text = getOptionValue(options, "text", "");
         int duration = getOptionValue(options, "duration", Snackbar.LENGTH_SHORT);
-        String position = getOptionValue(options, "duration", Snackbar.POSITION_BOTTOM);
+        String position = getOptionValue(options, "position", "bottom");
         int textColor = getOptionValue(options, "textColor", Color.WHITE);
         boolean rtl = getOptionValue(options, "rtl", false);
         String fontFamily = getOptionValue(options, "fontFamily", null);
@@ -126,14 +129,14 @@ public class SnackbarModule extends ReactContextBaseJavaModule {
             e.printStackTrace();
             return;
         }
-        View snackbarView = snackbar.getView();
+        View layout = snackbar.getView();
 
         if (rtl && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            snackbarView.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-            snackbarView.setTextDirection(View.TEXT_DIRECTION_RTL);
+            layout.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            layout.setTextDirection(View.TEXT_DIRECTION_RTL);
         }
 
-        TextView snackbarText = snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
+        TextView snackbarText = layout.findViewById(com.google.android.material.R.id.snackbar_text);
         snackbarText.setTextColor(textColor);
 
         if (font != null) {
@@ -143,12 +146,14 @@ public class SnackbarModule extends ReactContextBaseJavaModule {
         mActiveSnackbars.add(snackbar);
 
         if (options.hasKey("backgroundColor")) {
-            snackbarView.setBackgroundColor(options.getInt("backgroundColor"));
+            layout.setBackgroundColor(options.getInt("backgroundColor"));
         }
-
-        if (options.hasKey("position") && getOptionValue(actionOptions, "position") === Snackbar.POSITION_TOP) {
-            View snackbarView = snackbar.getView();
-            FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)snackbarView.getLayoutParams();
+        
+        if (options.hasKey("position")) {
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) layout.getLayoutParams();
+            //If the view is not covering the whole snackbar layout, add this line
+            params.gravity = Gravity.TOP;
+            layout.setLayoutParams(params);
         }
 
         if (options.hasKey("action")) {
@@ -173,7 +178,7 @@ public class SnackbarModule extends ReactContextBaseJavaModule {
             snackbar.setActionTextColor(actionTextColor);
 
             if (font != null) {
-                TextView snackbarActionText = snackbarView.findViewById(com.google.android.material.R.id.snackbar_action);
+                TextView snackbarActionText = layout.findViewById(com.google.android.material.R.id.snackbar_action);
                 snackbarActionText.setTypeface(font);
             }
         }
