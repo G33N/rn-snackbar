@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.facebook.react.bridge.*
-import com.geen.rnsnackbar.CustomSnackbar
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
@@ -92,12 +91,7 @@ class SnackbarModule(reactContext: ReactApplicationContext?) : ReactContextBaseJ
         }
         val snackbar: Snackbar
         try {
-            // snackbar = Snackbar.make(view, text, duration);
-            snackbar = CustomSnackbar.make(
-                    clContainer,
-                    text,
-                    duration).show()
-            snackbar.view.visibility = View.INVISIBLE
+            snackbar = text?.let { Snackbar.make(view, it, duration) }!!;
         } catch (e: IllegalArgumentException) {
             // TODO: Fix root cause of "No suitable parent found from the given view. Please provide a valid view."
             e.printStackTrace()

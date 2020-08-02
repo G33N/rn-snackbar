@@ -85,7 +85,8 @@ class Example extends Component {
           onPress={() =>
             Snackbar.show({
               text: "I'm at the top of the screen",
-              position: "top",
+              position: "bottom",
+              backgroundColor: "#FF6961",
             })
           }
         >

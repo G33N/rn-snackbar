@@ -1,14 +1,18 @@
 buildscript {
+    ext.kotlin_version = '1.4.0-rc'
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 apply plugin: "com.android.library"
+apply plugin: 'kotlin-android'
 
 // Fallback versions are intended to mirror
 // https://github.com/facebook/react-native/blob/v0.56.0/local-cli/templates/HelloWorld/android/build.gradle
@@ -44,9 +48,13 @@ repositories {
         }
         google()
         jcenter()
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
 }
 
 dependencies {
     implementation "com.facebook.react:react-native:${_reactNativeVersion}"
     implementation "com.google.android.material:material:${_materialVersion}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
