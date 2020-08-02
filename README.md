@@ -1,5 +1,7 @@
 # React Native Snackbar
 
+![Node.js Package deploy](https://github.com/G33N/rn-snackbar/workflows/Node.js%20Package%20deploy/badge.svg)
+
 Material Design "Snackbar" component for Android and iOS.
 Supports custom colors, fonts, background, position and languages.
 
@@ -147,3 +149,28 @@ In your `android/app/build.gradle`:
 #### Compiling [iOS]
 
 Make sure your Deployment Target is iOS 9.0 or above.
+
+## Testing changes
+
+Just run
+
+1. `yarn install` in the root.
+2. `cd example/`
+3. `yarn run:android` this build the package and sync with the example project.
+
+Note: You should run `yarn run:android` to update changes in example project.
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+## Authors
+
+Thanks to [cooperka](https://github.com/cooperka) by the guidelines [react-native-snackbar](https://github.com/cooperka/react-native-snackbar)
+
+- **Celiz Matias** - _Development Manager / Support Manager_ - [G33N](https://github.com/G33N)
+  See also the list of [contributors](https://github.com/G33N/rn-snackbar/contributors) who participated in this project.
