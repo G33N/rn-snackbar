@@ -29,6 +29,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
           scope: "@g33n"
       - run: yarn install
+      - run: git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com" && git config --global user.name "$GITHUB_ACTOR"
       - run: yarn version --minor
       - run: git push --tags && git push
       - run: yarn publish
