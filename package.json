@@ -1,6 +1,6 @@
 {
   "name": "@g33n/rn-snackbar",
-  "version": "2.2.4",
+  "version": "1.0.1",
   "description": "Material Design \"Snackbar\" component for Android and iOS.",
   "main": "lib/index.js",
   "types": "src/index.d.ts",
