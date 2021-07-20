@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "react": "16.10.2",
-    "react-native": "0.61.2",
+    "react-native": "0.62.3",
     "@g33n/rn-snackbar": "file:.."
   },
   "devDependencies": {
